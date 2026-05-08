@@ -1,14 +1,13 @@
 package com.buffsovernexus.basketball.dto;
 
 import java.time.OffsetDateTime;
-import java.util.Set;
 import java.util.UUID;
 
-public record AccountInfoResponse(
+public record PatchResponse(
         UUID id,
-        String username,
-        boolean superuser,
-        Set<String> accesses,
+        String title,
+        String version,
+        String notes,
         OffsetDateTime createdAt
 ) {}
 

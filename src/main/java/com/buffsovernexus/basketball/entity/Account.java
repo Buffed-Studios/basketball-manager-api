@@ -5,6 +5,8 @@ import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.OffsetDateTime;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.UUID;
 
 @Entity
@@ -26,6 +28,16 @@ public class Account {
 
     @Column(name = "password_hash", nullable = false)
     private String passwordHash;
+
+    @Column(nullable = false)
+    @Builder.Default
+    private boolean superuser = false;
+
+    @ElementCollection(fetch = FetchType.EAGER)
+    @CollectionTable(name = "account_accesses", joinColumns = @JoinColumn(name = "account_id"))
+    @Column(name = "access_node")
+    @Builder.Default
+    private Set<String> accesses = new HashSet<>();
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
