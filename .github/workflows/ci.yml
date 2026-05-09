@@ -76,5 +76,6 @@ jobs:
                -e POSTGRES_USERNAME=${{ secrets.POSTGRES_USERNAME }} \
                -e POSTGRES_PASSWORD=${{ secrets.POSTGRES_PASSWORD }} \
                -e JWT_SECRET_KEY=${{ secrets.JWT_SECRET_KEY }} \
+               -e CORS_ALLOWED_ORIGINS=${{ secrets.CORS_ALLOWED_ORIGINS }} \
                ${DOCKER_IMAGE}:latest"
 
